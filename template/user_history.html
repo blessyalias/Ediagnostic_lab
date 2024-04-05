@@ -1,0 +1,59 @@
+{% extends "user_home.html" %}
+{% block content %}
+
+
+    <!-- inner banner -->
+    <section class="inner-banner py-5">
+        <div class="w3l-breadcrumb py-lg-5">
+            <div class="container pt-5 pb-sm-4 pb-2">
+                <h4 class="inner-text-title font-weight-bold pt-5">Prediction History</h4>
+                <ul class="breadcrumbs-custom-path">
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- //inner banner -->
+
+    <section class="w3l-w3l-contacts-12 py-5">
+        <div class="contact-top py-lg-5 py-md-4 py-2">
+            <div class="container">
+                <table class="table text-light text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sl/No.</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Prediction</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{d.date}}</td>
+                        <td>{{d.result}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  
+                </div>
+            </div>
+        </section>
+                      
+        <script>
+            function validateDate(inputDate) {
+                // var inputDate = document.getElementById("dateInput").value;
+                var currentDate = new Date();
+                var enteredDate = new Date(inputDate);
+        
+                if (enteredDate < currentDate) {
+                    alert("You have selected a date before today");
+                    document.getElementById("subBtn").disabled = true;
+                } else {
+                    document.getElementById("subBtn").disabled = false;
+        
+                }
+            }
+        </script>
+        
+{% endblock %}
